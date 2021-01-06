@@ -23,6 +23,7 @@ public class BaseEcommerceTests {
 
             desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 3a Android 9");
             desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"uiautomator2");
+            desiredCapabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 14);
             desiredCapabilities.setCapability(MobileCapabilityType.APP, eCommerceApkLocation);
 
             androidDriver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"), desiredCapabilities);
