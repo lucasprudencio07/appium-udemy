@@ -1,17 +1,14 @@
-package ecommerce;
+package application_ecommerce;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriverException;
 import taps.InteractionsWithElements;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 
 public class ECommerceTests extends  BaseEcommerceTests {

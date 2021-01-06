@@ -1,4 +1,4 @@
-package basics;
+package application_demo;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
