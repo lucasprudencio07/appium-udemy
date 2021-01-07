@@ -98,7 +98,7 @@ public class BasicsTests extends BaseTests {
     public void workingWithScrollDownTest() {
 
         androidDriver.findElementByAndroidUIAutomator("text(\"Views\")").click();
-        interactionsWithElements.scrollDownOnAList(textProperty, textvalueWebView);
+        interactionsWithElements.scrollDownOnAListAndClick(textProperty, textvalueWebView);
     }
 
 

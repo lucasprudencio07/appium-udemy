@@ -93,8 +93,12 @@ public class InteractionsWithElements {
     }
 
     // scroll down on a scrollable list of elements
-    public void scrollDownOnAList(String property, String value) {
+    public void scrollDownOnAListAndClick(String property, String value) {
         androidDriver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(" + property + "(\"" + value + "\"))").click();
+    }
+
+    public void scrollDownOnAList(String property, String value) {
+        androidDriver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(" + property + "(\"" + value + "\"))");
     }
 
     // drag and drop an element based on their id
