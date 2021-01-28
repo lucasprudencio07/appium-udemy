@@ -73,8 +73,8 @@ public class InteractionsWithElements {
     }
 
     public void longPressOnATextPopupElement(WebElement webElementXPath) {
-        Point location = webElementXPath.getLocation();
-        touchAction.press(PointOption.point(location.getX(), location.getY()))
+        Point webElementLocation = webElementXPath.getLocation();
+        touchAction.press(PointOption.point(webElementLocation.getX(), webElementLocation.getY()))
                    .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(5))).release().perform();
 
     }

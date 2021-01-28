@@ -176,7 +176,7 @@ public class ECommerceTests extends  BaseEcommerceTests {
 
         insertShoesOnTheCartTest();
 
-        WebElement termsAndCondtionsXPath = androidDriver.findElementByXPath("//android.widget.TextView[@index='3']");
+        WebElement termsAndCondtionsXPath = androidDriver.findElementByXPath("//android.widget.TextView[@text='Please read our terms of conditions']");
 
         androidDriver.findElementByClassName("android.widget.CheckBox").click();
 
@@ -188,8 +188,11 @@ public class ECommerceTests extends  BaseEcommerceTests {
             androidDriver.findElementById("android:id/button1").click();
         }
 
+        androidDriver.findElementById("com.androidsample.generalstore:id/btnProceed").click();
+
         Thread.sleep(5000);
 
+        androidDriver.context()
      }
 
 }
