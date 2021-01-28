@@ -6,8 +6,10 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -67,7 +69,14 @@ public class InteractionsWithElements {
         WebElement webElement = androidDriver.findElementByXPath(webElementXPath);
 
         touchAction.longPress(LongPressOptions.longPressOptions().withElement(ElementOption.element(webElement))
-                .withDuration(Duration.ofSeconds(2))).release().perform();
+                   .withDuration(Duration.ofSeconds(2))).release().perform();
+    }
+
+    public void longPressOnATextPopupElement(WebElement webElementXPath) {
+        Point location = webElementXPath.getLocation();
+        touchAction.press(PointOption.point(location.getX(), location.getY()))
+                   .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(5))).release().perform();
+
     }
 
     //swipe on a specific element using a select element by XPath and dropping in a 'X, Y' location

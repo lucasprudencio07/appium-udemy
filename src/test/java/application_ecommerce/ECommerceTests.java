@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
 import taps.InteractionsWithElements;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -17,6 +18,7 @@ public class ECommerceTests extends  BaseEcommerceTests {
 
     private final String jordan6Rings = "Jordan 6 Rings";
     private final String jordanSE = "Air Jordan 1 Mid SE";
+    private final String termsExpectedTitle = "Terms Of Conditions";
 
     private String shoeName;
 
@@ -133,6 +135,7 @@ public class ECommerceTests extends  BaseEcommerceTests {
 
         goBackAndAddAnotherShoeTest();
 
+        /*
         Double j6Price = Double.parseDouble(androidDriver.findElementsById("com.androidsample.generalstore:id/productPrice")
                                                          .get(0).getText().replace("$", ""));
         Double jSEPrice = Double.parseDouble(androidDriver.findElementsById("com.androidsample.generalstore:id/productPrice")
@@ -145,6 +148,48 @@ public class ECommerceTests extends  BaseEcommerceTests {
                                                                   .getText().replace("$", ""));
 
         assertThat(shoesSumActual, is(equalTo(shoesSumExpected)));
+        */
+
+        Integer listSize = androidDriver.findElementsById("com.androidsample.generalstore:id/productPrice").size();
+
+        Double shoesSumActual = 0.0;
+
+        for (int index = 0; index < listSize; index++) {
+
+            Double shoePrice = Double.parseDouble(androidDriver.findElementsById("com.androidsample.generalstore:id/productPrice")
+                                            .get(index).getText().replace("$", ""));
+            System.out.println(shoePrice);
+            shoesSumActual += shoePrice;
+        }
+
+        System.out.println(shoesSumActual);
+
+        Double shoesSumExpected = Double.parseDouble(androidDriver.findElementById("com.androidsample.generalstore:id/totalAmountLbl")
+                .getText().replace("$", ""));
+
+        assertThat(shoesSumActual, is(equalTo(shoesSumExpected)));
     }
+
+
+    @Test
+    public void readTermsAndConditionsTest() throws InterruptedException {
+
+        insertShoesOnTheCartTest();
+
+        WebElement termsAndCondtionsXPath = androidDriver.findElementByXPath("//android.widget.TextView[@index='3']");
+
+        androidDriver.findElementByClassName("android.widget.CheckBox").click();
+
+        interactionsWithElements.longPressOnATextPopupElement(termsAndCondtionsXPath);
+
+        String terms = androidDriver.findElementById("com.androidsample.generalstore:id/alertTitle").getText();
+
+        if (terms.equals(termsExpectedTitle)) {
+            androidDriver.findElementById("android:id/button1").click();
+        }
+
+        Thread.sleep(5000);
+
+     }
 
 }
