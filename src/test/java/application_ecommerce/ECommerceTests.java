@@ -3,7 +3,12 @@ package application_ecommerce;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
+import javafx.scene.input.KeyCode;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import taps.InteractionsWithElements;
@@ -190,9 +195,18 @@ public class ECommerceTests extends  BaseEcommerceTests {
 
         androidDriver.findElementById("com.androidsample.generalstore:id/btnProceed").click();
 
-        Thread.sleep(5000);
+        androidDriver.context("WEBVIEW_com.androidsample.generalstore");
 
-        androidDriver.context()
-     }
+        Thread.sleep(6000);
+
+        //String googlePageText = androidDriver.findElement(By.id("SIvCob")).getText();
+        //System.out.println(googlePageText);
+
+        androidDriver.findElement(By.name("q")).sendKeys("Tecnoblog");
+        androidDriver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+        //androidDriver.findElement(By.linkText("Tecnoblog | tecnologia que interessa")).click();
+
+        Thread.sleep(10000);
+    }
 
 }
