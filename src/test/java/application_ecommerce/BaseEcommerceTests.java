@@ -25,6 +25,7 @@ public class BaseEcommerceTests {
             desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"uiautomator2");
             desiredCapabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 14);
             desiredCapabilities.setCapability(MobileCapabilityType.APP, eCommerceApkLocation);
+            //desiredCapabilities.setCapability(MobileCapabilityType.AUTO_WEBVIEW, true);
 
             androidDriver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"), desiredCapabilities);
             androidDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);

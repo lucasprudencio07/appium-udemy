@@ -3,15 +3,14 @@ package application_ecommerce;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
-import javafx.scene.input.KeyCode;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import taps.InteractionsWithElements;
+
+import java.time.Duration;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -195,18 +194,27 @@ public class ECommerceTests extends  BaseEcommerceTests {
 
         androidDriver.findElementById("com.androidsample.generalstore:id/btnProceed").click();
 
+        Thread.sleep(7000);
+
         androidDriver.context("WEBVIEW_com.androidsample.generalstore");
+
+        androidDriver.findElement(By.name("q")).sendKeys("Techspot");
+        androidDriver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+
+        Thread.sleep(7000);
+
+        /*androidDriver.runAppInBackground(Duration.ofSeconds(2));
 
         Thread.sleep(6000);
 
-        //String googlePageText = androidDriver.findElement(By.id("SIvCob")).getText();
-        //System.out.println(googlePageText);
+        String googleLogoText = androidDriver.findElement(By.id("hplogo")).getText();
+        System.out.println(googleLogoText);
 
         androidDriver.findElement(By.name("q")).sendKeys("Tecnoblog");
         androidDriver.findElement(By.name("q")).sendKeys(Keys.ENTER);
         //androidDriver.findElement(By.linkText("Tecnoblog | tecnologia que interessa")).click();
 
-        Thread.sleep(10000);
+        Thread.sleep(10000);*/
     }
 
 }
